@@ -14,7 +14,7 @@ git add .
 
 git commit -m "Message"
 
-git push hashx cud_user_API
+git push hashx read_user_API
 
 # readuser
  This Microservice contains APIs to :
