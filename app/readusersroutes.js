@@ -6,6 +6,7 @@ module.exports = (app, console) => {
 
     app.post('/readuser',async (req, res) => {
          result  = await readuser.readuser(req);
+	 console.log(req.body);
          utils.handleresult(res,result)
         }
     )
