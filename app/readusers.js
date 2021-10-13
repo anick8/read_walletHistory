@@ -1,10 +1,10 @@
 var pgsql = require('../lib/pgsql')
 
 exports.readuser = async (req) => { 
-        var usn = req.body.usname;
+        var email = req.body.email;
         let result
-        qname='select "UserUUID","Username" from "UserInfo" where "Username" = $1' 
-        qarg=usn
+        qname='select "UserUUID","Email" from "UserInfo" where "Email" = $1' 
+        qarg=email
         try{
             result =await pgsql.conquery(qname,[qarg])
             console.log(result.rows)
@@ -21,7 +21,7 @@ exports.readuser = async (req) => {
 exports.readAllusers = async (req) => {
 
     var userid = req.body.usid || "0";
-    var usname = req.body.usname || "";
+    var email = req.body.email || "";
     var created = req.body.createdat || "0";
     var modified = req.body.modifiedat || "0";
     var limit = req.body.limit || "10";
@@ -32,7 +32,7 @@ exports.readAllusers = async (req) => {
 	
     const readusersquery = {
         name: 'fetch-users',
-        text: 'SELECT * FROM "UserInfo" WHERE "UserUUID" = $1 AND "CreatedAt" > $2 AND "ModifiedAt" > $3 OR "Username" like $4 ORDER BY $5 DESC LIMIT $6 OFFSET $7 ',
+        text: 'SELECT * FROM "UserInfo" WHERE "UserUUID" = $1 AND "CreatedAt" > $2 AND "ModifiedAt" > $3 OR "Email" like $4 ORDER BY $5 DESC LIMIT $6 OFFSET $7 ',
         values: [userid,created,modified,`${usname}%`,orderby,limit,offset]
     }
 	try{
