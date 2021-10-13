@@ -1,8 +1,9 @@
 var pgsql = require('../lib/pgsql')
 
 exports.readuser = async (req) => { 
-        console.log("Started!!!")
+
         var email = req.body.email;
+        console.log("Started!!! Email - " + email)
         let result
         qname='select "UserUUID","Email" from "UserInfo" where "Email" = $1' 
         qarg=email
