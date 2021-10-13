@@ -1,5 +1,5 @@
 module.exports = {
-    'apiport':8080,
+    'apiport':process.env.PORT||8080,
     // 'wsport':10121,
     // 'serveraddr': 'http://kafka4.intellicar.in:' + 10120,
     // 'userdoc_basedir' : '/mnt/pssd/node/platform/apiplatform/documents/user_doc_wallet',
