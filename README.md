@@ -1,5 +1,5 @@
-# Hashx User CUD Microservice
-Microservice to implement User Table Create Update and Delete operations.
+# Hashx User Read Microservice
+Microservice to implement User Table Read operations.
 
 Run using -
 
@@ -16,27 +16,45 @@ git commit -m "Message"
 
 git push hashx read_user_API
 
-# readuser
- This Microservice contains APIs to :
- 1)readuser: gets the username,UserUUID from the database given the Username
- 2)readAllusers: gets all the usernames that match a given string from the start given the Username.
- 
- 
-# URL Root: /readUser 
-## Inputs:
- Headers : {'Content-type': 'application/json'}
- request JSON : {"usname":"Enetr the username"}
- 
-## Outputs:
-  Output format: {'err':"error",'data':[{'username':"matchedusername"}],'message':"Status of the type of output"}
+# Routes
 
-# URL Root: /readAllUsers 
-## Inputs:
- Headers : {'Content-type': 'application/json'}
- request JSON : {"usname":"Enetr the username"}
- 
-## Outputs:
-  Output format: {'err':"error",'data':[{'username':"matchedusername1",'username':"matchedusername2"}],'message':"Status of the type of output"}
-  
+## /readUser
+
+Reads a User : 
+Request Body - 
+ - req.body.email
 
  
+ Response Body -
+ res.data  =  "UserUUID","Email"
+
+Query -
+'select "UserUUID","Email" from "UserInfo" where "Email" = $1' 
+
+
+## /readAllUsers
+
+Request Body -
+    req.body.UserUUID : Unique Identifier
+    req.body.email : email address of User
+    req.body.modifiedAt :  LastModified , ignore UserUUID with ModifiedAt < parameter, Default 0
+    req.body.createdAt :  CreatedAt , ignore UserUUID with createdAt < parameter, Default 0
+    req.body.limit : Number of rows returned , Default 10
+    req.body.offset : Offset of rows returned, Default 0
+    req.body.orderby : Column to OrderBy, Default "ModifiedAt";
+    req.body.orderdir : Order Direction ASC/DESC, Default "DESC";
+
+Response Body -
+ res.data  =  `VoteUUID`  `VoteDescription`  `VoteDescriptorURL`  `ModifiedAt`  `VoteAuthorUUID`  `CreatedAt` 
+
+
+Query - 
+'SELECT * FROM "UserInfo" WHERE "UserUUID" = $1 AND "CreatedAt" > $2 AND "ModifiedAt" > $3 OR "Email" like $4 ORDER BY $5 DESC LIMIT $6 OFFSET $7 '
+
+# Response Format
+
+[err,data,msg]
+
+ - err : Error message from SQL try block
+ - data : Data returned by SQL query
+ - msg : Custom message defined in API

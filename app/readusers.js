@@ -22,10 +22,10 @@ exports.readuser = async (req) => {
 
 exports.readAllusers = async (req) => {
 
-    var userid = req.body.usid || "0";
+    var userid = req.body.UserUUID || "0";
     var email = req.body.email || "";
-    var created = req.body.createdat || "0";
-    var modified = req.body.modifiedat || "0";
+    var created = req.body.createdAt || "0";
+    var modified = req.body.modifiedAt || "0";
     var limit = req.body.limit || "10";
     var offset = req.body.offset || "0";
     var orderby = req.body.orderby || "CreatedAt";

@@ -4,14 +4,14 @@ module.exports = (app, console) => {
     var readuser = require('./readusers');
 //    var utils = require('../common/utils');
 
-    app.post('/readuser',async (req, res) => {
+    app.post('/readUser',async (req, res) => {
          result  = await readuser.readuser(req);
 	 console.log(req.body);
          utils.handleresult(res,result)
         }
     )
         
-    app.post('/readAllusers',async (req, res) => {
+    app.post('/readAllUsers',async (req, res) => {
         result =await readuser.readAllusers(req);
         utils.handleresult(res,result)
         }
