@@ -35,14 +35,14 @@ Query -
 ## /readAllUsers
 
 Request Body -
-    req.body.UserUUID : Unique Identifier  
-    req.body.email : email address of User  
-    req.body.modifiedAt :  LastModified , ignore UserUUID with ModifiedAt < parameter, Default 0  
-    req.body.createdAt :  CreatedAt , ignore UserUUID with createdAt < parameter, Default 0  
-    req.body.limit : Number of rows returned , Default 10  
-    req.body.offset : Offset of rows returned, Default 0  
-    req.body.orderby : Column to OrderBy, Default "ModifiedAt";  
-    req.body.orderdir : Order Direction ASC/DESC, Default "DESC";  
+    req.body.UserUUID : Unique Identifier  \
+    req.body.email : email address of User  \
+    req.body.modifiedAt :  LastModified , ignore UserUUID with ModifiedAt < parameter, Default 0  \
+    req.body.createdAt :  CreatedAt , ignore UserUUID with createdAt < parameter, Default 0  \
+    req.body.limit : Number of rows returned , Default 10  \
+    req.body.offset : Offset of rows returned, Default 0  \
+    req.body.orderby : Column to OrderBy, Default "ModifiedAt";  \
+    req.body.orderdir : Order Direction ASC/DESC, Default "DESC";  \
 
 Response Body -  
  res.data  =  `VoteUUID`  `VoteDescription`  `VoteDescriptorURL`  `ModifiedAt`  `VoteAuthorUUID`  `CreatedAt` 
