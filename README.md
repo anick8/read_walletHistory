@@ -42,7 +42,7 @@ Request Body -
     req.body.limit : Number of rows returned , Default 10  \
     req.body.offset : Offset of rows returned, Default 0  \
     req.body.orderby : Column to OrderBy, Default "ModifiedAt";  \
-    req.body.orderdir : Order Direction ASC/DESC, Default "DESC";  \
+    req.body.orderdir : Order Direction ASC/DESC, Default "DESC"; 
 
 Response Body -  
  res.data  =  `VoteUUID`  `VoteDescription`  `VoteDescriptorURL`  `ModifiedAt`  `VoteAuthorUUID`  `CreatedAt` 
