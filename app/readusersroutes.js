@@ -5,14 +5,14 @@ module.exports = (app, console) => {
 //    var utils = require('../common/utils');
 
     app.post('/readUser',async (req, res) => {
-         result  = await readuser.readuser(req);
+         result  = await readuser.readUser(req);
 	 console.log(req.body);
          utils.handleresult(res,result)
         }
     )
         
     app.post('/readAllUsers',async (req, res) => {
-        result =await readuser.readAllusers(req);
+        result =await readuser.readAllUsers(req);
         utils.handleresult(res,result)
         }
     )
