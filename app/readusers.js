@@ -13,7 +13,7 @@ exports.readUser = async (req) => {
             if(result.rowCount == 1)
 	    	data = result.rows
 	    else
-		data = "Email Not Found!"
+		data = []
 	
             return [null,data,"Successfully fetched data"]
         }
