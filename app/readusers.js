@@ -10,7 +10,11 @@ exports.readUser = async (req) => {
         try{
             result =await pgsql.conquery(qname,[qarg])
             console.log(result.rows)
-            data = result.rows[0]
+            if(result.rowCount == 1)
+	    	data = result.rows[0]
+	    else
+		data = "Email Not Found!"
+	
             return [null,data,"Successfully fetched data"]
         }
         catch(err)
