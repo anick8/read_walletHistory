@@ -10,7 +10,7 @@ exports.readuser = async (req) => {
         try{
             result =await pgsql.conquery(qname,[qarg])
             console.log(result.rows)
-            data = result.rows
+            data = result.rows[0]
             return [null,data,"Successfully fetched data"]
         }
         catch(err)
