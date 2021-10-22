@@ -11,9 +11,9 @@ exports.readUser = async (req) => {
             result =await pgsql.conquery(qname,[qarg])
             console.log(result.rows)
             if(result.rowCount == 1)
-	    	data = result.rows
-	    else
-		data = []
+	    	    data = result.rows
+	        else
+		        data = []
 	
             return [null,data,"Successfully fetched data"]
         }
